@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ session.username }}'s Diabetes History</title>
+
+    <!-- INTERNAL CSS (Card-style like result page) -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding-top: 40px;
+        }
+
+        .container {
+            width: 800px;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2b4f81;
+            margin-bottom: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            background: #007bff;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            margin: 0 6px;
+            font-weight: bold;
+        }
+
+        a:hover {
+            background: #0056b3;
+        }
+
+        .result-card {
+            margin: 15px 0;
+            padding: 20px;
+            background: #f8fbff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+
+        .result-text {
+            font-size: 22px;
+            color: #007bff;
+            margin-bottom: 12px;
+        }
+
+        .details p {
+            font-size: 16px;
+            margin: 6px 0;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <h2>{{ session.username }}'s Diabetes Test History</h2>
+
+    <div style="margin-bottom: 20px;">
+        <a href="/index">New Test</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/logout">Logout</a>
+    </div>
+
+    {% if history %}
+        {% for row in history %}
+        <div class="result-card">
+            <h3 class="result-text">{{ row["result"] }}</h3>
+            <div class="details">
+                <p><b>Date/Time:</b> {{ row["date"] }}</p>
+                <p><b>Glucose:</b> {{ row["glucose"] }} mg/dL</p>
+                <p><b>Blood Pressure:</b> {{ row["bp"] }} mmHg</p>
+                <p><b>Insulin:</b> {{ row["insulin"] }} μU/mL</p>
+                <p><b>BMI:</b> {{ row["bmi"] }} kg/m²</p>
+                <p><b>Pregnancies:</b> {{ row["pregnancies"] }}</p>
+                <p><b>Skin Thickness:</b> {{ row["skin"] }}</p>
+                <p><b>DPF:</b> {{ row["dpf"] }}</p>
+                <p><b>Age:</b> {{ row["age"] }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No history found. Take your first test!</p>
+    {% endif %}
+</div>
+</body>
+</html>

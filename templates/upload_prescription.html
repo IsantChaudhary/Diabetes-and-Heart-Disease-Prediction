@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Prescription</title>
+    <style>
+        body {
+            background: #f4f7fb;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box {
+            width: 420px;
+            background: #fff;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2b4f81;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 12px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 6px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-top: 18px;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Upload Prescription</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+
+    <label>Visit Date</label>
+    <input type="date" name="visit_date" required>
+
+    <label>Doctor Notes</label>
+    <textarea name="doctor_note" required></textarea>
+
+    <label>Upload Prescription</label>
+    <input type="file" name="prescription" accept="image/*,.pdf" required>
+
+    <button type="submit">Upload</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

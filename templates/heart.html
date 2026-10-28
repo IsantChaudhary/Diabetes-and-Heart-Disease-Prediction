@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Heart Prediction</title>
+
+<style>
+
+body{
+    font-family: Arial;
+    background-color:#f4f6f9;
+    text-align:center;
+}
+
+.container{
+    width:400px;
+    margin:auto;
+    margin-top:40px;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0px 0px 10px gray;
+}
+
+h2{
+    margin-bottom:20px;
+    color:#333;
+}
+
+input{
+    width:90%;
+    padding:8px;
+    margin:6px;
+    border-radius:5px;
+    border:1px solid gray;
+}
+
+button{
+    margin-top:15px;
+    padding:10px;
+    width:200px;
+    background-color:#e74c3c;
+    color:white;
+    border:none;
+    border-radius:6px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background-color:#c0392b;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Heart Prediction</h2>
+
+<form method="POST">
+
+<input name="age" placeholder="Age"><br>
+
+<input name="sex" placeholder="Sex (0=Female,1=Male)"><br>
+
+<input name="cp" placeholder="Chest Pain Type"><br>
+
+<input name="trestbps" placeholder="Blood Pressure"><br>
+
+<input name="chol" placeholder="Cholesterol"><br>
+
+<input name="fbs" placeholder="Sugar Level"><br>
+
+<input name="restecg" placeholder="ECG Result"><br>
+
+<input name="thalach" placeholder="Heart Rate"><br>
+
+<input name="exang" placeholder="Exercise Angina"><br>
+
+<input name="oldpeak" placeholder="Oldpeak"><br>
+
+<input name="slope" placeholder="Slope"><br>
+
+<input name="ca" placeholder="CA"><br>
+
+<input name="thal" placeholder="Thal"><br>
+
+<button type="submit">Predict</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

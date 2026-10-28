@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diabetes Prediction</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #4b79a1, #283e51);
+            color: white;
+        }
+
+        .container {
+            max-width: 450px;
+            margin: 60px auto;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 0px 12px rgba(0,0,0,0.3);
+        }
+
+        h2, h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fffcfc;
+        }
+
+        a {
+            color: #ffe082;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 15px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input {
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            background: rgba(255,255,255,0.9);
+            color: #333;
+            font-size: 15px;
+        }
+
+        input::placeholder {
+            color: #444;
+            font-weight: 500;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 12px;
+            background: #ffca28;
+            color: black;
+            border: none;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #ffb300;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome, {{ session.username }}</h2>
+
+        <div style="text-align:center; margin-bottom:20px;">
+            <a href="/dashboard">View History</a> | 
+            <a href="/logout">Logout</a>
+        </div>
+
+        <h3>Enter Test Values</h3>
+        <form method="POST">
+
+            <input type="number" step="any" name="pregnancies" placeholder="Pregnancies" required>
+            <input type="number" step="any" name="glucose" placeholder="Glucose Level" required>
+            <input type="number" step="any" name="bp" placeholder="Blood Pressure" required>
+            <input type="number" step="any" name="skin" placeholder="Skin Thickness" required>
+            <input type="number" step="any" name="insulin" placeholder="Insulin Level" required>
+            <input type="number" step="any" name="bmi" placeholder="BMI" required>
+            <input type="number" step="any" name="dpf" placeholder="Diabetes Pedigree Function" required>
+            <input type="number" step="any" name="age" placeholder="Age" required>
+
+            <button type="submit">Check Result</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Reminder</title>
+    <style>
+        body{
+            font-family: Arial;
+            background: #eef2f3;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            min-height:100vh;
+        }
+        .box{
+            width:350px;
+            padding:25px;
+            background:white;
+            border-radius:10px;
+            box-shadow:0 0 15px rgba(0,0,0,0.2);
+        }
+        input,button{
+            width:100%;
+            padding:8px;
+            margin:8px 0;
+        }
+        button{
+            background:#2e86de;
+            border:none;
+            color:white;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h2>Add Medicine Reminder</h2>
+    <form method="POST">
+
+        <label>Medicine Name</label>
+        <input type="text" name="med_name" required>
+
+        <label>Dosage</label>
+        <input type="text" name="dosage" required>
+
+        <label>Time</label>
+        <input type="time" name="time" required>
+
+        <label>Date</label>
+        <input type="date" name="date" required>
+
+        <button type="submit">Save Reminder</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Prescriptions</title>
+    <style>
+        body {
+            background: #f4f7fb;
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2b4f81;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            margin-bottom: 20px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        img {
+            width: 160px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .info p {
+            margin: 6px 0;
+        }
+
+        .info b {
+            color: #2b4f81;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Uploaded Prescriptions</h2>
+
+{% for p in prescriptions %}
+<div class="card">
+    <img src="{{ p.file_path }}" style="max-width:100%; border-radius:10px;">
+
+    <div class="info">
+        <p><b>Doctor:</b> {{ p.doctor_name }}</p>
+        <p><b>Visit Date:</b> {{ p.visit_date }}</p>
+        <p><b>Notes:</b> {{ p.notes }}</p>
+        <p><b>Uploaded:</b> {{ p.uploaded_at }}</p>
+    </div>
+</div>
+{% else %}
+<p style="text-align:center;">No prescriptions uploaded yet.</p>
+{% endfor %}
+
+</body>
+</html>

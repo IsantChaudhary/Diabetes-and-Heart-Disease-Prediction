@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reminders</title>
+    <style>
+        table{
+            width:80%;
+            margin:auto;
+            border-collapse:collapse;
+            margin-top:40px;
+            font-family:Arial;
+        }
+        th,td{
+            padding:10px;
+            border:1px solid #ccc;
+            text-align:center;
+        }
+        h2{text-align:center;margin-top:20px}
+
+        .pending{color:orange;font-weight:bold}
+        .take{color:green;font-weight:bold}
+
+        a{
+            background:red;
+            color:white;
+            padding:6px 12px;
+            text-decoration:none;
+            border-radius:4px;
+        }
+    </style>
+
+    <!-- Auto refresh every 60 seconds -->
+    <meta http-equiv="refresh" content="60">
+</head>
+
+<body>
+
+<h2>Your Medicine Reminders</h2>
+
+<!-- ✅ MOVING STATUS MESSAGE -->
+<marquee direction="right" scrollamount="6" style="color:red;font-weight:bold;margin-top:15px;">
+⚠️ Reminder not completed yet — please take your medicine on time!
+</marquee>
+
+<table>
+    <tr>
+        <th>Medicine</th>
+        <th>Dosage</th>
+        <th>Time</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    {% for r in reminders %}
+    <tr>
+        <!-- Correct column mapping -->
+        <td>{{ r[0] }}</td>   <!-- medicine_name -->
+        <td>{{ r[1] }}</td>   <!-- dosage -->
+        <td>{{ r[2] }}</td>   <!-- reminder_time -->
+        <td>{{ r[3] }}</td>   <!-- reminder_date -->
+
+        <td>
+            {% if r[4] == 'Take Medicine' %}
+                <span class="take">Take Medicine</span>
+            {% else %}
+                <span class="pending">Pending</span>
+            {% endif %}
+        </td>
+
+        <td>
+            <!-- r[5] = reminder id -->
+            <a href="/delete_reminder/{{ r[5] }}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

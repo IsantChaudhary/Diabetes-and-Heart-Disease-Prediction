@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ session.username }}'s Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding-top: 40px;
+        }
+
+        .container {
+            width: 800px;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2b4f81;
+            margin-bottom: 20px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        a.top-btn, a.chat-btn, a.logout-btn {
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .top-btn { background: #007bff; }
+        .top-btn:hover { background: #0056b3; }
+
+        .chat-btn { background: #ff7f50; }
+        .chat-btn:hover { background: #e0603b; }
+
+        .logout-btn { background: #dc3545; }
+        .logout-btn:hover { background: #b02a37; }
+
+        .result-card {
+            margin: 15px 0;
+            padding: 20px;
+            background: #f8fbff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: left;
+            position: relative;
+        }
+
+        .result-text {
+            font-size: 22px;
+            color: #007bff;
+            margin-bottom: 12px;
+        }
+
+        .details p {
+            font-size: 16px;
+            margin: 6px 0;
+            color: #333;
+        }
+
+        .pdf-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .pdf-btn:hover {
+            background: #1e7e34;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <h2>{{ session.username }}'s Previous Results</h2>
+
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+        <a href="/index" class="top-btn">New Test</a>
+        <a href="/chatbot" class="chat-btn">Chatbot</a>
+        <a href="/food" class="top-btn">Diet Recommendation</a>
+        <a href="/reminder" class="top-btn">Add Reminder</a>
+        <a href="/show_reminder" class="top-btn">All Reminders</a>
+        <a href="/upload_prescription" class="top-btn">Upload Prescription</a>
+        <a href="/view_prescriptions" class="top-btn">View Prescriptions</a>
+        <a href="/logout" class="logout-btn">Logout</a>
+    </div>
+
+    {% if history %}
+        {% for row in history %}
+        <div class="result-card">
+            <h3 class="result-text">{{ row["result"] }}</h3>
+
+            <div class="details">
+                <p><b>Date/Time:</b> {{ row["date"] }}</p>
+                <p><b>Glucose:</b> {{ row["glucose"] }} mg/dL</p>
+                <p><b>Blood Pressure:</b> {{ row["bp"] }} mmHg</p>
+                <p><b>Insulin:</b> {{ row["insulin"] }} μU/mL</p>
+                <p><b>BMI:</b> {{ row["bmi"] }} kg/m²</p>
+                <p><b>Pregnancies:</b> {{ row["pregnancies"] }}</p>
+                <p><b>Skin Thickness:</b> {{ row["skin"] }}</p>
+                <p><b>DPF:</b> {{ row["dpf"] }}</p>
+                <p><b>Age:</b> {{ row["age"] }}</p>
+            </div>
+
+            <a href="{{ url_for('report', history_id=row['id']) }}" class="pdf-btn">Download PDF</a>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No previous results found. Take your first test!</p>
+    {% endif %}
+</div>
+</body>
+</html>
